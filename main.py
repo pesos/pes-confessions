@@ -13,13 +13,17 @@ def landing(confID):
 		return 'Confession #', confID, 'not found'
 	return cursor[0]['message']
 
-	'''	
-	conf = ''
-	for obj in cursor:
-		conf += obj['message']
-		conf += '\n\n'
+@app.route("/")
+def default():
+	collection = Connection()['conf']['a']
+	cursor = collection.find({'confID': str(randrange(10, 180))})
+	if cursor.count() == 0:
+		return 'Refresh again!'
+	return 'Random Confession \n' + cursor[0]['message']
 
-	return conf
-	'''
+@app.route("/random")
+def rand():
+	return default()
+
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=80)
