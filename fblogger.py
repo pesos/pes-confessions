@@ -28,7 +28,7 @@ def extract(data):
 		logger["confID"] = confID
 		logger["message"] = post["message"]
 		cursor = collection.find({'confID': str(confID)})
-		if cursor.count() == 0:
+		if cursor.count() != 0:
 			continue
 		collection.insert(logger, safe=True)
 		print 'Inserted', confID
