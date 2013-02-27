@@ -7,7 +7,7 @@ app.debug = False
 
 @app.route("/<confID>")
 def landing(confID):
-	collection = Connection()['conf']['a']
+	collection = Connection()['conf']['b']
 	cursor = collection.find({'confID': str(confID)})
 	if cursor.count() == 0:
 		return 'Confession #', confID, 'not found'
@@ -21,13 +21,5 @@ def landing(confID):
 
 	return conf
 	'''
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=80)

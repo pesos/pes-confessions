@@ -17,7 +17,7 @@ def getID(message):
 		raise KeyError("Confession Number not found!")
 
 def extract(data):
-	collection = Connection()['conf']['a']
+	collection = Connection()['conf']['b']
 	for post in data:
 		logger = {}
 		try: 
